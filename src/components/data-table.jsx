@@ -142,6 +142,8 @@ const columns = [
           aria-label="Select all" />
       </div>
     ),
+
+    
     cell: ({ row }) => (
       <div className="flex items-center justify-center">
         <Checkbox
@@ -165,10 +167,10 @@ const columns = [
     accessorKey: "keyword[traffic]",
     header: "Keyword[Traffic]",
     cell: ({ row }) => (
-      <div className="w-32">
-        <Badge variant="outline" className="px-1.5 text-muted-foreground">
+      <div className="w-56">
+        {/* <Badge variant="outline" className="px-1.5 text-muted-foreground"> */}
           {row.original.type}
-        </Badge>
+        {/* </Badge> */}
       </div>
     ),
   },
@@ -573,6 +575,8 @@ export function DataTable({
       <TabsContent value="focus-documents" className="flex flex-col px-4 lg:px-6">
         <div className="aspect-video w-full flex-1 rounded-lg border border-dashed"></div>
       </TabsContent>
+
+      
     </Tabs>
   );
 }
