@@ -1,6 +1,7 @@
 import { Separator } from "@/components/ui/separator"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { Button } from "./ui/button";
+import { Input } from "./ui/input";
 
 
 export function SiteHeader() {
@@ -36,6 +37,7 @@ export function SiteHeader() {
   </Button>
 </div>
 
+<Input type="text" placeholder="Search for titles" />
 
   </div>
   

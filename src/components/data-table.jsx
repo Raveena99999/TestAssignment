@@ -167,10 +167,10 @@ const columns = [
     accessorKey: "keyword[traffic]",
     header: "Keyword[Traffic]",
     cell: ({ row }) => (
-      <div className="w-56">
-        {/* <Badge variant="outline" className="px-1.5 text-muted-foreground"> */}
+      <div className="w-32">
+        <Badge variant="outline" className="px-1.5 text-muted-foreground">
           {row.original.type}
-        {/* </Badge> */}
+        </Badge>
       </div>
     ),
   },

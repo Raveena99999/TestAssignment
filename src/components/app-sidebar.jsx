@@ -33,7 +33,7 @@ const data = {
   },
   teams: [
     {
-      name: "Acme Inc",
+      name: "abun",
       logo: GalleryVerticalEnd,
       plan: "Enterprise",
     },
@@ -50,27 +50,27 @@ const data = {
   ],
   navMain: [
     {
-      title: "Playground",
+      title: "Articles",
       url: "#",
       icon: SquareTerminal,
       isActive: true,
       items: [
         {
-          title: "History",
+          title: "Create Article",
           url: "#",
         },
         {
-          title: "Starred",
+          title: "Generate Article",
           url: "#",
         },
         {
-          title: "Settings",
+          title: "Keyword Projects",
           url: "#",
         },
       ],
     },
     {
-      title: "Models",
+      title: "Auto Blog",
       url: "#",
       icon: Bot,
       items: [
@@ -89,7 +89,7 @@ const data = {
       ],
     },
     {
-      title: "Documentation",
+      title: "Internal Links",
       url: "#",
       icon: BookOpen,
       items: [
@@ -112,7 +112,7 @@ const data = {
       ],
     },
     {
-      title: "Settings",
+      title: "Free Backlinks",
       url: "#",
       icon: Settings2,
       items: [
@@ -130,6 +130,148 @@ const data = {
         },
         {
           title: "Limits",
+          url: "#",
+        },
+      ],
+    },
+
+
+ {
+      title: "Integrations",
+      url: "#",
+      icon: Bot,
+      items: [
+        {
+          title: "Genesis",
+          url: "#",
+        },
+        {
+          title: "Explorer",
+          url: "#",
+        },
+        {
+          title: "Quantum",
+          url: "#",
+        },
+      ],
+    },
+
+
+     {
+      title: "Subscriptions",
+      url: "#",
+      icon: Bot,
+      items: [
+        {
+          title: "Genesis",
+          url: "#",
+        },
+        {
+          title: "Explorer",
+          url: "#",
+        },
+        {
+          title: "Quantum",
+          url: "#",
+        },
+      ],
+    },
+
+     {
+      title: "Affiliate Program",
+      url: "#",
+      icon: Bot,
+      items: [
+        {
+          title: "Genesis",
+          url: "#",
+        },
+        {
+          title: "Explorer",
+          url: "#",
+        },
+        {
+          title: "Quantum",
+          url: "#",
+        },
+      ],
+    },
+
+     {
+      title: "Help Center",
+      url: "#",
+      icon: Bot,
+      items: [
+        {
+          title: "Genesis",
+          url: "#",
+        },
+        {
+          title: "Explorer",
+          url: "#",
+        },
+        {
+          title: "Quantum",
+          url: "#",
+        },
+      ],
+    },
+
+     {
+      title: "updates",
+      url: "#",
+      icon: Bot,
+      items: [
+        {
+          title: "Genesis",
+          url: "#",
+        },
+        {
+          title: "Explorer",
+          url: "#",
+        },
+        {
+          title: "Quantum",
+          url: "#",
+        },
+      ],
+    },
+
+     {
+      title: "Live Chat Support",
+      url: "#",
+      icon: Bot,
+      items: [
+        {
+          title: "Genesis",
+          url: "#",
+        },
+        {
+          title: "Explorer",
+          url: "#",
+        },
+        {
+          title: "Quantum",
+          url: "#",
+        },
+      ],
+    },
+
+     {
+      title: "Profile",
+      url: "#",
+      icon: Bot,
+      items: [
+        {
+          title: "Genesis",
+          url: "#",
+        },
+        {
+          title: "Explorer",
+          url: "#",
+        },
+        {
+          title: "Quantum",
           url: "#",
         },
       ],
