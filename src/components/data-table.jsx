@@ -154,16 +154,16 @@ const columns = [
     enableHiding: false,
   },
   {
-    accessorKey: "header",
-    header: "Header",
+    accessorKey: "article title",
+    header: "Article Title",
     cell: ({ row }) => {
       return <TableCellViewer item={row.original} />;
     },
     enableHiding: false,
   },
   {
-    accessorKey: "type",
-    header: "Section Type",
+    accessorKey: "keyword[traffic]",
+    header: "Keyword[Traffic]",
     cell: ({ row }) => (
       <div className="w-32">
         <Badge variant="outline" className="px-1.5 text-muted-foreground">
@@ -173,8 +173,8 @@ const columns = [
     ),
   },
   {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: "words",
+    header: "Words",
     cell: ({ row }) => (
       <Badge
         variant="outline"
@@ -189,8 +189,8 @@ const columns = [
     ),
   },
   {
-    accessorKey: "target",
-    header: () => <div className="w-full text-right">Target</div>,
+    accessorKey: "created on",
+    header: () => <div className="w-full text-right">Created On</div>,
     cell: ({ row }) => (
       <form
         onSubmit={(e) => {
@@ -212,8 +212,8 @@ const columns = [
     ),
   },
   {
-    accessorKey: "limit",
-    header: () => <div className="w-full text-right">Limit</div>,
+    accessorKey: "action",
+    header: () => <div className="w-full text-right">Action</div>,
     cell: ({ row }) => (
       <form
         onSubmit={(e) => {
@@ -235,8 +235,8 @@ const columns = [
     ),
   },
   {
-    accessorKey: "reviewer",
-    header: "Reviewer",
+    accessorKey: "publish",
+    header: "Publish",
     cell: ({ row }) => {
       const isAssigned = row.original.reviewer !== "Assign reviewer"
 
