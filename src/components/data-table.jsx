@@ -258,7 +258,7 @@ const columns = [
         />
       </form>
     ),
-    enableSorting: true, 
+    enableSorting: true,
   },
   {
     accessorKey: "publish",
@@ -366,6 +366,7 @@ export function DataTable({ data: initialData }) {
     pageIndex: 0,
     pageSize: 10,
   });
+
   const sortableId = React.useId();
   const sensors = useSensors(
     useSensor(MouseSensor, {}),
@@ -377,6 +378,7 @@ export function DataTable({ data: initialData }) {
 
   const table = useReactTable({
     data,
+
     columns,
     state: {
       sorting,
@@ -403,7 +405,7 @@ export function DataTable({ data: initialData }) {
   React.useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
-    }, 2000); 
+    }, 2000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -515,6 +517,18 @@ export function DataTable({ data: initialData }) {
             sensors={sensors}
             id={sortableId}
           >
+            {/* <div className="mb-4 flex gap-2">
+        {["", "Done", "Pending", "In Progress"].map((status) => (
+          <Button
+            key={status || "all"}
+            variant={statusFilter === status ? "default" : "outline"}
+            onClick={() => setStatusFilter(status)}
+          >
+            {status || "All"}
+          </Button>
+        ))}
+      </div> */}
+
             <Table>
               <TableHeader className="sticky top-0 z-10 bg-muted">
                 {table.getHeaderGroups().map((headerGroup) => (

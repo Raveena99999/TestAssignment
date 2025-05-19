@@ -18,21 +18,20 @@ export function SiteHeader() {
             Articles
           </h1>
           <div className="w-[64px]" />{" "}
-          {/* Invisible spacer to balance layout */}
         </div>
       </header>
 
       <div className="flex justify-center  my-4">
-        <Button variant="outline" size="sm">
+        <Button className="hidden lg:inline" variant="outline" size="sm">
           <span className="hidden lg:inline">Generated Articles</span>
         </Button>
-        <Button variant="outline" size="sm">
+        <Button className="hidden lg:inline"  variant="outline" size="sm">
           <span className="hidden lg:inline">Published Articles</span>
         </Button>
-        <Button variant="outline" size="sm">
+        <Button className="hidden lg:inline"  variant="outline" size="sm">
           <span className="hidden lg:inline">Schduled Articles</span>
         </Button>
-        <Button variant="outline" size="sm">
+        <Button className="hidden lg:inline"  variant="outline" size="sm">
           <span className="hidden lg:inline">Archieved Articles</span>
         </Button>
       </div>
