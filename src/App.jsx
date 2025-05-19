@@ -1,4 +1,3 @@
-
 import {
   SidebarInset,
   SidebarProvider,
@@ -10,20 +9,15 @@ import { SectionCards } from "./components/section-cards";
 import { ChartAreaInteractive } from "./components/chart-area-interactive";
 import { DataTable } from "./components/data-table";
 import data from "./app/dashboard/data.json";
-import { useState } from "react";
-
 
 export default function App({ children }) {
-
-
   return (
     <SidebarProvider>
       <AppSidebar variant="inset" />
       <SidebarInset>
-        <SiteHeader  />
-    
-        <DataTable data={data} />
+        <SiteHeader />
 
+        <DataTable data={data} />
 
         <div className="flex flex-1 flex-col">
           <div className="@container/main flex flex-1 flex-col gap-2">

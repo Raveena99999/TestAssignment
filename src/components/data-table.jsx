@@ -1,7 +1,5 @@
 import * as React from "react";
 
-
-
 import {
   DndContext,
   KeyboardSensor,
@@ -27,17 +25,8 @@ import {
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
-
   useReactTable,
 } from "@tanstack/react-table";
-
-// const table = useReactTable({
-//   getCoreRowModel: getCoreRowModel(),
-//   getSortedRowModel: getSortedRowModel(), // <-- Required for sorting
-// });
-
-
-
 
 import {
   CheckCircle2Icon,
@@ -105,9 +94,6 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export const schema = z.object({
-
-  
-
   id: z.number(),
   header: z.string(),
   type: z.string(),
@@ -121,11 +107,6 @@ function DragHandle({ id }) {
   const { attributes, listeners } = useSortable({
     id,
   });
-
-
-
- 
-
 
   return (
     <Button
@@ -238,26 +219,23 @@ const columns = [
   {
     accessorKey: "limit",
     header: ({ column }) => (
-    
-
       <div className="w-full text-right">
-  <label className="text-sm font-medium">Action</label>
-  <select
-    className="ml-2 text-sm border border-gray-300 rounded  bg-white hover:border-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
-    value={column.getIsSorted() || ""}
-    onChange={(e) => {
-      const value = e.target.value;
-      if (value === "asc") column.toggleSorting(false);
-      else if (value === "desc") column.toggleSorting(true);
-      else column.clearSorting();
-    }}
-  >
-    <option value="">Sort</option>
-    <option value="asc"> Asc</option>
-    <option value="desc"> Dsc</option>
-  </select>
-</div>
-
+        <label className="text-sm font-medium">Action</label>
+        <select
+          className="ml-2 text-sm border border-gray-300 rounded  bg-white hover:border-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
+          value={column.getIsSorted() || ""}
+          onChange={(e) => {
+            const value = e.target.value;
+            if (value === "asc") column.toggleSorting(false);
+            else if (value === "desc") column.toggleSorting(true);
+            else column.clearSorting();
+          }}
+        >
+          <option value="">Sort</option>
+          <option value="asc"> Asc</option>
+          <option value="desc"> Dsc</option>
+        </select>
+      </div>
     ),
     cell: ({ row }) => (
       <form
@@ -280,7 +258,7 @@ const columns = [
         />
       </form>
     ),
-    enableSorting: true, // ✅ this enables sorting
+    enableSorting: true, 
   },
   {
     accessorKey: "publish",
@@ -366,10 +344,6 @@ function DraggableRow({ row }) {
   );
 }
 
-
-
-
-
 const SkeletonRow = () => (
   <TableRow>
     {[...Array(8)].map((_, index) => (
@@ -379,10 +353,6 @@ const SkeletonRow = () => (
     ))}
   </TableRow>
 );
-
-
-
-
 
 export function DataTable({ data: initialData }) {
   const [isLoading, setIsLoading] = React.useState(true);
@@ -414,7 +384,6 @@ export function DataTable({ data: initialData }) {
       rowSelection,
       columnFilters,
       pagination,
-     
     },
     getRowId: (row) => row.id.toString(),
     enableRowSelection: true,
@@ -429,23 +398,14 @@ export function DataTable({ data: initialData }) {
     getSortedRowModel: getSortedRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
-
-   
   });
 
-
-React.useEffect(() => {
-  // Simulate data fetch delay
-  const timer = setTimeout(() => {
-    setIsLoading(false);
-  }, 2000); // e.g. 2s delay
-  return () => clearTimeout(timer);
-}, []);
-
-  
-
-
-
+  React.useEffect(() => {
+    const timer = setTimeout(() => {
+      setIsLoading(false);
+    }, 2000); 
+    return () => clearTimeout(timer);
+  }, []);
 
   function handleDragEnd(event) {
     const { active, over } = event;
@@ -574,16 +534,26 @@ React.useEffect(() => {
                   </TableRow>
                 ))}
               </TableHeader>
-              {/* <TableBody className="**:data-[slot=table-cell]:first:w-8">
-                {table.getRowModel().rows?.length ? (
-                  <SortableContext
-                    items={dataIds}
-                    strategy={verticalListSortingStrategy}
-                  >
-                    {table.getRowModel().rows.map((row) => (
-                      <DraggableRow key={row.id} row={row} />
-                    ))}
-                  </SortableContext>
+
+              <TableBody>
+                {isLoading ? (
+                  [...Array(5)].map((_, i) => <SkeletonRow key={i} />)
+                ) : table.getRowModel().rows?.length ? (
+                  table.getRowModel().rows.map((row) => (
+                    <TableRow
+                      key={row.id}
+                      data-state={row.getIsSelected() && "selected"}
+                    >
+                      {row.getVisibleCells().map((cell) => (
+                        <TableCell key={cell.id}>
+                          {flexRender(
+                            cell.column.columnDef.cell,
+                            cell.getContext()
+                          )}
+                        </TableCell>
+                      ))}
+                    </TableRow>
+                  ))
                 ) : (
                   <TableRow>
                     <TableCell
@@ -594,33 +564,7 @@ React.useEffect(() => {
                     </TableCell>
                   </TableRow>
                 )}
-              </TableBody> */}
-
-
-              <TableBody>
-  {isLoading ? (
-    [...Array(5)].map((_, i) => <SkeletonRow key={i} />)
-  ) : (
-    table.getRowModel().rows?.length ? (
-      table.getRowModel().rows.map((row) => (
-        <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
-          {row.getVisibleCells().map((cell) => (
-            <TableCell key={cell.id}>
-              {flexRender(cell.column.columnDef.cell, cell.getContext())}
-            </TableCell>
-          ))}
-        </TableRow>
-      ))
-    ) : (
-      <TableRow>
-        <TableCell colSpan={columns.length} className="h-24 text-center">
-          No results.
-        </TableCell>
-      </TableRow>
-    )
-  )}
-</TableBody>
-
+              </TableBody>
             </Table>
           </DndContext>
         </div>
