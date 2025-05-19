@@ -1,5 +1,7 @@
 import * as React from "react";
 
+
+
 import {
   DndContext,
   KeyboardSensor,
@@ -28,10 +30,15 @@ import {
 
   useReactTable,
 } from "@tanstack/react-table";
+
 // const table = useReactTable({
 //   getCoreRowModel: getCoreRowModel(),
 //   getSortedRowModel: getSortedRowModel(), // <-- Required for sorting
 // });
+
+
+
+
 import {
   CheckCircle2Icon,
   ChevronDownIcon,
@@ -98,6 +105,9 @@ import {
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export const schema = z.object({
+
+  
+
   id: z.number(),
   header: z.string(),
   type: z.string(),
@@ -107,11 +117,15 @@ export const schema = z.object({
   reviewer: z.string(),
 });
 
-// Create a separate component for the drag handle
 function DragHandle({ id }) {
   const { attributes, listeners } = useSortable({
     id,
   });
+
+
+
+ 
+
 
   return (
     <Button
@@ -161,7 +175,7 @@ const columns = [
     enableHiding: false,
   },
   {
-    accessorKey: "article title",
+    accessorKey: "articleTitle",
     header: "Article Title",
     cell: ({ row }) => {
       return <TableCellViewer item={row.original} />;
@@ -180,8 +194,8 @@ const columns = [
     ),
   },
   {
-    accessorKey: "words",
-    header: "Words",
+    accessorKey: "status",
+    header: "Status",
     cell: ({ row }) => (
       <Badge
         variant="outline"
@@ -224,22 +238,12 @@ const columns = [
   {
     accessorKey: "limit",
     header: ({ column }) => (
-      // <div
-      //   className="w-full text-right"
-      //   onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-      // >
-      //   Action
-      //   {column.getIsSorted() === "asc"
-      //     ? " 🔼"
-      //     : column.getIsSorted() === "desc"
-      //     ? " 🔽"
-      //     : ""}
-      // </div>
+    
 
       <div className="w-full text-right">
   <label className="text-sm font-medium">Action</label>
   <select
-    className="ml-2 text-sm border border-gray-300 rounded px-1 py-0.5 bg-white hover:border-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
+    className="ml-2 text-sm border border-gray-300 rounded  bg-white hover:border-gray-400 focus:outline-none focus:ring-1 focus:ring-blue-500"
     value={column.getIsSorted() || ""}
     onChange={(e) => {
       const value = e.target.value;
@@ -248,7 +252,7 @@ const columns = [
       else column.clearSorting();
     }}
   >
-    {/* <option value="">Sort</option> */}
+    <option value="">Sort</option>
     <option value="asc"> Asc</option>
     <option value="desc"> Dsc</option>
   </select>
@@ -390,6 +394,7 @@ export function DataTable({ data: initialData }) {
       rowSelection,
       columnFilters,
       pagination,
+     
     },
     getRowId: (row) => row.id.toString(),
     enableRowSelection: true,
@@ -404,7 +409,17 @@ export function DataTable({ data: initialData }) {
     getSortedRowModel: getSortedRowModel(),
     getFacetedRowModel: getFacetedRowModel(),
     getFacetedUniqueValues: getFacetedUniqueValues(),
+
+   
   });
+
+
+ 
+ 
+  
+
+
+
 
   function handleDragEnd(event) {
     const { active, over } = event;

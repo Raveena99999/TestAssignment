@@ -12,16 +12,16 @@ import { DataTable } from "./components/data-table";
 import data from "./app/dashboard/data.json";
 import { useState } from "react";
 
+
 export default function App({ children }) {
-   
-  
+
 
   return (
     <SidebarProvider>
       <AppSidebar variant="inset" />
       <SidebarInset>
         <SiteHeader  />
-            
+    
         <DataTable data={data} />
 
 
