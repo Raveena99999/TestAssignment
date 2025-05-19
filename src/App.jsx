@@ -1,3 +1,4 @@
+
 import {
   SidebarInset,
   SidebarProvider,
@@ -9,13 +10,26 @@ import { SectionCards } from "./components/section-cards";
 import { ChartAreaInteractive } from "./components/chart-area-interactive";
 import { DataTable } from "./components/data-table";
 import data from "./app/dashboard/data.json";
+import { useState } from "react";
+
 export default function App({ children }) {
+   
+   const [query, setQuery] = useState("");
+
+  // Replace with your actual article key (e.g., "article title")
+  const filtered = data.filter((item) =>
+    item.header.toLowerCase().includes(query.toLowerCase())
+  );
+
   return (
     <SidebarProvider>
       <AppSidebar variant="inset" />
       <SidebarInset>
-        <SiteHeader />
-        <DataTable data={data} />
+        {/* <SiteHeader  /> */}
+             <SiteHeader onSearch={setQuery} />
+               <DataTable data={filtered}/>
+        {/* <DataTable data={data} /> */}
+
 
         <div className="flex flex-1 flex-col">
           <div className="@container/main flex flex-1 flex-col gap-2">

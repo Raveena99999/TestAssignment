@@ -2,9 +2,12 @@ import { Separator } from "@/components/ui/separator"
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
+import { useState } from "react";
 
+export function SiteHeader({ onSearch }) {
 
-export function SiteHeader() {
+  
+   
   return (
   <div>
   <header
@@ -37,7 +40,9 @@ export function SiteHeader() {
   </Button>
 </div>
 
-<Input type="text" placeholder="Search for titles" />
+{/* <Input type="text" placeholder="Search for titles" /> */}
+  
+       
 
   </div>
   
