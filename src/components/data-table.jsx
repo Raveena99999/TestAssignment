@@ -366,7 +366,27 @@ function DraggableRow({ row }) {
   );
 }
 
+
+
+
+
+const SkeletonRow = () => (
+  <TableRow>
+    {[...Array(8)].map((_, index) => (
+      <TableCell key={index}>
+        <div className="h-4 w-full bg-gray-200 animate-pulse rounded" />
+      </TableCell>
+    ))}
+  </TableRow>
+);
+
+
+
+
+
 export function DataTable({ data: initialData }) {
+  const [isLoading, setIsLoading] = React.useState(true);
+
   const [data, setData] = React.useState(() => initialData);
   const [rowSelection, setRowSelection] = React.useState({});
   const [columnVisibility, setColumnVisibility] = React.useState({});
@@ -414,8 +434,14 @@ export function DataTable({ data: initialData }) {
   });
 
 
- 
- 
+React.useEffect(() => {
+  // Simulate data fetch delay
+  const timer = setTimeout(() => {
+    setIsLoading(false);
+  }, 2000); // e.g. 2s delay
+  return () => clearTimeout(timer);
+}, []);
+
   
 
 
@@ -548,7 +574,7 @@ export function DataTable({ data: initialData }) {
                   </TableRow>
                 ))}
               </TableHeader>
-              <TableBody className="**:data-[slot=table-cell]:first:w-8">
+              {/* <TableBody className="**:data-[slot=table-cell]:first:w-8">
                 {table.getRowModel().rows?.length ? (
                   <SortableContext
                     items={dataIds}
@@ -568,7 +594,33 @@ export function DataTable({ data: initialData }) {
                     </TableCell>
                   </TableRow>
                 )}
-              </TableBody>
+              </TableBody> */}
+
+
+              <TableBody>
+  {isLoading ? (
+    [...Array(5)].map((_, i) => <SkeletonRow key={i} />)
+  ) : (
+    table.getRowModel().rows?.length ? (
+      table.getRowModel().rows.map((row) => (
+        <TableRow key={row.id} data-state={row.getIsSelected() && "selected"}>
+          {row.getVisibleCells().map((cell) => (
+            <TableCell key={cell.id}>
+              {flexRender(cell.column.columnDef.cell, cell.getContext())}
+            </TableCell>
+          ))}
+        </TableRow>
+      ))
+    ) : (
+      <TableRow>
+        <TableCell colSpan={columns.length} className="h-24 text-center">
+          No results.
+        </TableCell>
+      </TableRow>
+    )
+  )}
+</TableBody>
+
             </Table>
           </DndContext>
         </div>
